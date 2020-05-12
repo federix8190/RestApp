@@ -20,22 +20,24 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import py.com.konecta.model.csj.AccesoSistema;
+
 @Stateless
 public class TestServices {
 
-	//@PersistenceContext(unitName = "CSJ_POI_DS")
-    //protected EntityManager em;
+	@PersistenceContext(unitName = "CSJ_POI_DS")
+    protected EntityManager em;
 	
 	Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 	
-//	public List<Departamento> getDepartamento() {
-//		
-//		String sql = "SELECT c from Departamento c ";
-//        Query query = em.createQuery(sql);
-//        List<Departamento> res = query.getResultList();
-//        return res;
-//        
-//	}
+	public List<AccesoSistema> getDepartamento() {
+		
+		String sql = "SELECT a from AccesoSistema a ";
+        Query query = em.createQuery(sql);
+        List<AccesoSistema> res = query.getResultList();
+        return res;
+        
+	}
 	
 	@Schedule(hour = "15", minute = "*/15")
 	public void limpiarDatos() throws InterruptedException, UnknownHostException {

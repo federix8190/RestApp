@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -26,11 +27,14 @@ import javax.ws.rs.core.Response;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import py.com.konecta.interfaces.RestApiInterface;
+import py.com.konecta.interfaces.dto.Usuario;
 import py.com.konecta.model.DatosUsuarioDto;
 import py.com.konecta.model.Deuda;
 import py.com.konecta.model.Servicio;
+import py.com.konecta.model.csj.AccesoSistema;
 
-@Path("")
+@Path("/test")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TestResource {
@@ -40,22 +44,51 @@ public class TestResource {
 	@EJB
 	TestServices service;
 	
+	@Inject
+    protected RestApiInterface restService;
+	
 	@GET
-	@Path("/test")
 	public HashMap<String, String> test() {
-		
 		HashMap<String, String> res = new HashMap<String, String>();
 		res.put("status", "0");
 		res.put("mensaje", "Hola");
 		return res;
 	}
 	
-//	@GET
-//	@Path("/departamentos")
-//	public List<Departamento> getDepartamento() {
-//		
-//		return service.getDepartamento();
-//	}
+	@GET
+	@Path("/usuarios")
+	public Response getUsuarios() {
+		
+		try {
+			
+			HashMap<String, Object> r = new HashMap<String, Object>();
+			String token = restService.getToken();
+			r.put("token", token);
+			
+			Usuario datos = new Usuario();
+			datos.setNombre("Juan");
+			datos.setApellido("Perez");
+			datos.setCorreo("jperez@test.com");
+			datos.setId_ciudad(11L);
+			Response res = restService.createUser(datos);
+			r.put("status_1", res.getStatus());
+			res.close();
+			
+			return Response.ok(r).build();
+	    	
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return Response.status(500).build();
+		}
+	}
+	
+	@GET
+	@Path("/departamentos")
+	public List<AccesoSistema> getDepartamento() {
+		
+		return service.getDepartamento();
+	}
 	
 	@GET
 	@Path("/deudas")
