@@ -21,6 +21,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import py.com.konecta.model.csj.AccesoSistema;
+import py.com.konecta.model.csj.Departamento;
+import py.com.konecta.model.nucleo.Consumo;
 
 @Stateless
 public class TestServices {
@@ -28,15 +30,25 @@ public class TestServices {
 	@PersistenceContext(unitName = "CSJ_POI_DS")
     protected EntityManager em;
 	
+	@PersistenceContext(unitName = "dwhDS")
+    protected EntityManager emDWH;
+	
 	Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 	
-	public List<AccesoSistema> getDepartamento() {
+	public List<Departamento> getDepartamento() {
 		
-		String sql = "SELECT a from AccesoSistema a ";
+		String sql = "SELECT a from Departamento a ";
         Query query = em.createQuery(sql);
-        List<AccesoSistema> res = query.getResultList();
-        return res;
-        
+        List<Departamento> res = query.getResultList();
+        return res;        
+	}
+	
+	public List<Consumo> getConsumo() {
+		
+		String sql = "SELECT a from Consumo a ";
+        Query query = emDWH.createQuery(sql);
+        List<Consumo> res = query.getResultList();
+        return res;        
 	}
 	
 	@Schedule(hour = "15", minute = "*/15")

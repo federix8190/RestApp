@@ -5,5 +5,15 @@
         <jta-data-source>java:jboss/datasources/CSJ_POI_DS</jta-data-source>
         <properties/>
     </persistence-unit>
+	
+	<persistence-unit name="dwhDS" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/dwhDS</jta-data-source>
+        <properties/>
+    </persistence-unit>
+	
+	<persistence-unit name="TEST_DS" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/TEST_DS</jta-data-source>
+        <properties/>
+    </persistence-unit>
     
 </persistence>

@@ -54,7 +54,7 @@ public class KRealm extends AuthorizingRealm {
 	    		info = new SimpleAuthorizationInfo(permisos);
 	    		
 			} catch (NamingException e) {
-				log.severe("3 - doGetAuthorizationInfo Error : " + e.getMessage());
+				log.severe("3 - doGetAuthorizationInfo NamingException : " + e.getMessage());
 			}
     	}
     	

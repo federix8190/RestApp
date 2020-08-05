@@ -65,7 +65,7 @@ public class SessionResource {
             
     		} catch (IncorrectCredentialsException e) {
     			
-            	log.severe("Credenciales incorrectas : " + username);
+            	log.severe("4 Credenciales incorrectas : " + username);
                 Respuesta res = new Respuesta(false, "Credenciales incorrectas");
                 return Response.status(401).entity(res).build();
                 

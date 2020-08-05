@@ -1,5 +1,7 @@
 package py.com.konecta.services;
 
+import static py.com.konecta.seguridad.SessionUtils.getAlias;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,6 +35,8 @@ import py.com.konecta.model.DatosUsuarioDto;
 import py.com.konecta.model.Deuda;
 import py.com.konecta.model.Servicio;
 import py.com.konecta.model.csj.AccesoSistema;
+import py.com.konecta.model.csj.Departamento;
+import py.com.konecta.model.nucleo.Consumo;
 
 @Path("/test")
 @Produces(MediaType.APPLICATION_JSON)
@@ -52,6 +56,14 @@ public class TestResource {
 		HashMap<String, String> res = new HashMap<String, String>();
 		res.put("status", "0");
 		res.put("mensaje", "Hola");
+		return res;
+	}
+	
+	@GET
+	@Path("/user")
+	public HashMap<String, String> user() {
+		HashMap<String, String> res = new HashMap<String, String>();
+		res.put("User", getAlias());
 		return res;
 	}
 	
@@ -85,9 +97,16 @@ public class TestResource {
 	
 	@GET
 	@Path("/departamentos")
-	public List<AccesoSistema> getDepartamento() {
+	public List<Departamento> getDepartamento() {
 		
 		return service.getDepartamento();
+	}
+	
+	@GET
+	@Path("/consumos")
+	public List<Consumo> getConsumo() {
+		
+		return service.getConsumo();
 	}
 	
 	@GET

@@ -21,19 +21,18 @@ public class KCredentialsMatcher extends SimpleCredentialsMatcher {
 	
 	@Override
     public boolean doCredentialsMatch(AuthenticationToken tok, AuthenticationInfo info) {
-
-		log.info("3 - doCredentialsMatch : " + info.getPrincipals().getPrimaryPrincipal().toString());
 		
         try {
         	
 	    	if (tok != null && tok.getPrincipal() != null && tok.getCredentials() != null) {
 	        	
 	        	String username = tok.getPrincipal().toString();
-	            String encryptedToken = new Md5Hash(new String((char[]) tok.getCredentials()), username).toString();
-	            log.info("3 - doCredentialsMatch : " + username + " - " + encryptedToken);
+	            String password = new String((char[]) tok.getCredentials());
+	        	String encryptedToken = new Md5Hash(new String((char[]) tok.getCredentials()), username).toString();
+	            log.info("3 - doCredentialsMatch : " + username + " - " + password + " - " + encryptedToken);
 	            Context ctx = new InitialContext();
 	            userService = (UsuarioService) ctx.lookup(EJB_JNDI_USUARIO_SERVICE);	            
-	            return userService.esUsuarioValido(username, encryptedToken);
+	            return userService.esUsuarioValido(username, password);
 	        }
 	    	
         } catch (Exception e) {

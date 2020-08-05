@@ -1,0 +1,10 @@
+Usos del git
+
+1 - Crear branh develop a partir de master
+git checkout -b develop master
+git push origin develop
+
+2 - Mezclar lo que se agrego en develop a master
+git checkout master
+git merge develop
+git push
