@@ -1,6 +1,6 @@
 package py.com.konecta.seguridad;
 
-import static py.com.konecta.Constantes.EJB_JNDI_USUARIO_SERVICE;
+import static py.com.konecta.configuracion.Constantes.EJB_JNDI_USUARIO_SERVICE;
 
 import java.util.logging.Logger;
 

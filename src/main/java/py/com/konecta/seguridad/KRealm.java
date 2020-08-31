@@ -1,7 +1,8 @@
 package py.com.konecta.seguridad;
 
-import static py.com.konecta.Constantes.EJB_JNDI_USUARIO_SERVICE;
+import static py.com.konecta.configuracion.Constantes.EJB_JNDI_USUARIO_SERVICE;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -50,7 +51,9 @@ public class KRealm extends AuthorizingRealm {
 				
 				Context ctx = new InitialContext();
 				userService = (UsuarioService) ctx.lookup(EJB_JNDI_USUARIO_SERVICE);
-	    		Set<String> permisos = userService.getPermisosUsuario(username);
+	    		//Set<String> permisos = userService.getPermisosUsuario(username);
+				Set<String> permisos = new HashSet<>();
+				permisos.add("USERS");
 	    		info = new SimpleAuthorizationInfo(permisos);
 	    		
 			} catch (NamingException e) {

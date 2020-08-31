@@ -11,17 +11,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
@@ -38,12 +36,16 @@ import py.com.konecta.model.csj.AccesoSistema;
 import py.com.konecta.model.csj.Departamento;
 import py.com.konecta.model.nucleo.Consumo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Path("/test")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TestResource {
 	
-	Logger log = Logger.getLogger(this.getClass().getCanonicalName());
+	//Logger log = Logger.getLogger(this.getClass().getCanonicalName());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@EJB
 	TestServices service;
@@ -56,6 +58,7 @@ public class TestResource {
 		HashMap<String, String> res = new HashMap<String, String>();
 		res.put("status", "0");
 		res.put("mensaje", "Hola");
+		logger.debug("holsaaaaaa");
 		return res;
 	}
 	

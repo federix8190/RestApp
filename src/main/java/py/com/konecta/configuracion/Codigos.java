@@ -1,4 +1,4 @@
-package py.com.konecta;
+package py.com.konecta.configuracion;
 
 import javax.inject.Singleton;
 

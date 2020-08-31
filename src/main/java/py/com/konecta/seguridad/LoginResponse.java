@@ -1,6 +1,6 @@
 package py.com.konecta.seguridad;
 
-import py.com.konecta.Respuesta;
+import py.com.konecta.base.Respuesta;
 
 public class LoginResponse extends Respuesta {
 	

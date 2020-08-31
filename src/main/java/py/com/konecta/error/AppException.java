@@ -1,4 +1,4 @@
-package py.com.konecta;
+package py.com.konecta.error;
 
 public class AppException extends Exception {
 

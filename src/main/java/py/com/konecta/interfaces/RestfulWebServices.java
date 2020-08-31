@@ -1,10 +1,10 @@
-package py.com.konecta;
+package py.com.konecta.interfaces;
 
 import javax.enterprise.inject.Produces;
 
 import org.jboss.resteasy.client.ProxyFactory;
 
-import py.com.konecta.interfaces.RestApiInterface;
+import py.com.konecta.error.AppException;
 
 public class RestfulWebServices {
 

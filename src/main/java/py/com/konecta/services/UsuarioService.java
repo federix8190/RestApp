@@ -1,5 +1,6 @@
 package py.com.konecta.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,10 +24,11 @@ public class UsuarioService {
 	
 	public List<Usuario> getAll() {
 		
-		String sql = "SELECT u FROM Usuario";
+		/*String sql = "SELECT u FROM Usuario";
 		Query q = em.createQuery(sql);
 		List<Usuario> users = q.getResultList();
-		return users;
+		return users;*/
+		return new ArrayList<Usuario>();
 	}
 	
 	public Usuario getUsuario(String userName) {
