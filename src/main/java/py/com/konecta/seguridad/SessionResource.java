@@ -14,7 +14,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
-import py.com.konecta.base.Respuesta;
+import py.com.konecta.Respuesta;
 
 @Path("/sesion")
 public class SessionResource {

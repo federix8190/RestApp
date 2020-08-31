@@ -1,4 +1,4 @@
-package py.com.konecta.model.nucleo;
+package py.com.konecta.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

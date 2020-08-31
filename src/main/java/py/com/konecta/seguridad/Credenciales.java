@@ -4,6 +4,7 @@ public class Credenciales {
 
 	private String username;
 	private String password;
+	private String origen;
 	
 	public Credenciales() {
 	}
@@ -22,6 +23,14 @@ public class Credenciales {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
 	}
 	
 }

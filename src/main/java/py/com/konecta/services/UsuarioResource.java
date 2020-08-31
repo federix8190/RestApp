@@ -9,8 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import py.com.konecta.model.csj.Departamento;
-import py.com.konecta.model.nucleo.Usuario;
+import py.com.konecta.model.Persona;
 
 @Path("/usuarios")
 @Produces(MediaType.APPLICATION_JSON)
@@ -21,7 +20,7 @@ public class UsuarioResource {
 	UsuarioService service;
 	
 	@GET
-	public List<Usuario> getUsuarios() {
+	public List<Persona> getUsuarios() {
 		
 		return service.getAll();
 	}

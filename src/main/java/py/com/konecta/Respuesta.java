@@ -1,4 +1,4 @@
-package py.com.konecta.base;
+package py.com.konecta;
 
 public class Respuesta {
 	

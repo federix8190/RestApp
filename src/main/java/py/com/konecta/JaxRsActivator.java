@@ -1,4 +1,4 @@
-package py.com.konecta.configuracion;
+package py.com.konecta;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
