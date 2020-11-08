@@ -40,6 +40,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import py.com.konecta.ws.csj.autenticacion.CControlAutenticacion;
+import py.com.konecta.data.RestApiClient;
 import py.com.konecta.seguridad.Credenciales;
 import py.com.konecta.ws.csj.autenticacion.Autenticacion;
 import py.com.konecta.ws.csj.autenticacion.AutenticacionSoap;
@@ -54,7 +55,8 @@ public class TestResource {
 	@Context
 	private HttpServletRequest httpRequest;
 	
-	//@Inject
+	@Inject
+	RestApiClient restApi;
     //AutenticacionSoap wsAutenticacion;
 	
 	@GET
@@ -65,6 +67,13 @@ public class TestResource {
 		res.put("status", "0");
 		res.put("IP", ip);
 		return res;
+	}
+	
+	@GET
+	@Path("/web")
+	public String get() throws KeyManagementException, NoSuchAlgorithmException {
+		
+		return restApi.getDatos();
 	}
 	
 	@POST
